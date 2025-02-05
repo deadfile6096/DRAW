@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>draw</title>
+    <title>DRAWER</title>
     <link rel="icon" href="images/image.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -87,7 +87,7 @@
       }
 
       #toolbar,
-      #drawingCanvas {
+      #DRAWERingCanvas {
         margin-top: 10px;
         opacity: 0;
       }
@@ -158,7 +158,7 @@
       <div class="buttons">
         <button id="twitter">X</button>
         <button id="telegram">Telegram</button>
-        <button>$IKB</button>
+        <button>$DRAW</button>
         <button id="connect-wallet">Connect</button>
       </div>
       <div class="center-text">
@@ -168,13 +168,13 @@
         </div>
       </div>
       <div class="logo">
-        <img src="images/drawweb.png" alt="Logo">
+        <img src="images/DRAWERweb.png" alt="Logo">
       </div>
     </div>
 
-    <div id="introText" style="opacity: 1;">Welcome! Please draw your custom cursor.</div>
+    <div id="introText" style="opacity: 1;">Welcome! Please DRAWER your custom cursor.</div>
     <input style="display: none" type="file" id="imageInput" accept="image/*">
-    <canvas id="drawingCanvas" width="400" height="400" style="opacity: 1;"></canvas>
+    <canvas id="DRAWERingCanvas" width="400" height="400" style="opacity: 1;"></canvas>
     <div id="toolbar" style="opacity: 1;">
       <button id="clearButton">Clear</button>
       <button id="confirmButton">Confirm</button>
@@ -183,7 +183,7 @@
     <canvas id="mainCanvas" width="2000" height="850"></canvas>
 
     <div id="modalOverlay">
-      <div>Time is up! You can no longer draw.</div>
+      <div>Time is up! You can no longer DRAWER.</div>
       <button>Continue</button>
     </div>
 
@@ -191,11 +191,11 @@
       document
         .getElementById("telegram")
         .addEventListener("click", function () {
-          window.location.href = "https://x.com/drawdotcc"; // Замените на нужный URL
+          window.location.href = "https://x.com/DRAWERdotcc"; // Замените на нужный URL
         });
 
       document.getElementById("twitter").addEventListener("click", function () {
-        window.location.href = "https://t.me/drawdotcc"; // Замените на нужный URL
+        window.location.href = "https://t.me/DRAWERdotcc"; // Замените на нужный URL
       });
 
       document
@@ -218,7 +218,7 @@
         });
 
       const introText = document.getElementById("introText");
-      const canvas = document.getElementById("drawingCanvas");
+      const canvas = document.getElementById("DRAWERingCanvas");
       const ctx = canvas.getContext("2d");
       const clearButton = document.getElementById("clearButton");
       const confirmButton = document.getElementById("confirmButton");
@@ -228,9 +228,9 @@
       const modalOverlay = document.getElementById("modalOverlay");
       const modalButton = modalOverlay.querySelector("button");
 
-      let drawing = false;
+      let DRAWERing = false;
       let timerStarted = false;
-      let drawingTimeout;
+      let DRAWERingTimeout;
 
       // Fade-in effect
       setTimeout(() => {
@@ -247,26 +247,26 @@
           const url = URL.createObjectURL(file);
           img.onload = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            ctx.DRAWERImage(img, 0, 0, canvas.width, canvas.height);
             URL.revokeObjectURL(url);
           };
           img.src = url;
         }
       });
 
-      // Start drawing
+      // Start DRAWERing
       let lastX = 0;
       let lastY = 0;
 
       canvas.addEventListener("mousedown", (event) => {
-        drawing = true;
+        DRAWERing = true;
         const rect = canvas.getBoundingClientRect();
         lastX = event.clientX - rect.left;
         lastY = event.clientY - rect.top;
       });
 
       canvas.addEventListener("mousemove", (event) => {
-        if (!drawing) return;
+        if (!DRAWERing) return;
         const rect = canvas.getBoundingClientRect();
         const currentX = event.clientX - rect.left;
         const currentY = event.clientY - rect.top;
@@ -283,11 +283,11 @@
       });
 
       canvas.addEventListener("mouseup", () => {
-        drawing = false;
+        DRAWERing = false;
       });
 
       canvas.addEventListener("mouseout", () => {
-        drawing = false;
+        DRAWERing = false;
       });
 
       // Clear the canvas
@@ -302,26 +302,26 @@
         tempCanvas.height = 32;
         const tempCtx = tempCanvas.getContext("2d");
 
-        tempCtx.drawImage(canvas, 0, 0, 32, 32);
+        tempCtx.DRAWERImage(canvas, 0, 0, 32, 32);
         const dataURL = tempCanvas.toDataURL("image/png");
 
         document.body.style.cursor = `url(${dataURL}) 16 16, auto`;
         mainCanvas.style.cursor = `url(${dataURL}) 16 16, auto`;
         canvas.style.cursor = `url(${dataURL}) 16 16, auto`;
 
-        document.getElementById("drawingCanvas").style.display = "none";
+        document.getElementById("DRAWERingCanvas").style.display = "none";
         document.getElementById("toolbar").style.display = "none";
         introText.style.display = "none";
         mainCanvas.style.display = "block";
       });
 
-      // Main canvas drawing logic with timer
+      // Main canvas DRAWERing logic with timer
       mainCanvas.addEventListener("mousedown", (event) => {
         if (!timerStarted) {
           timerStarted = true;
           startTimer();
         }
-        drawing = true;
+        DRAWERing = true;
 
         const rect = mainCanvas.getBoundingClientRect();
         lastX = event.clientX - rect.left;
@@ -329,15 +329,15 @@
       });
 
       mainCanvas.addEventListener("mouseup", () => {
-        drawing = false;
+        DRAWERing = false;
       });
 
       mainCanvas.addEventListener("mouseout", () => {
-        drawing = false;
+        DRAWERing = false;
       });
 
       mainCanvas.addEventListener("mousemove", (event) => {
-        if (!drawing) return;
+        if (!DRAWERing) return;
 
         const rect = mainCanvas.getBoundingClientRect();
         const currentX = event.clientX - rect.left;
@@ -356,7 +356,7 @@
 
       // Start the 10-second timer
       function startTimer() {
-        drawingTimeout = setTimeout(() => {
+        DRAWERingTimeout = setTimeout(() => {
           showModal();
         }, 10000); // 10 seconds
       }
@@ -393,7 +393,7 @@
       }
 
       // Функция для рисования каракулей
-      function drawScribble(ctx, user) {
+      function DRAWERScribble(ctx, user) {
         const startX = getRandomInt(0, mainCanvas.width);
         const startY = getRandomInt(0, mainCanvas.height);
         const numSegments = getRandomInt(5, 100); // Количество сегментов в каракуле
@@ -418,7 +418,7 @@
 
       function updateVirtualUsers() {
         virtualUsers.forEach((user) => {
-          drawScribble(mainCtx, user);
+          DRAWERScribble(mainCtx, user);
         });
 
         setTimeout(updateVirtualUsers, getRandomInt(1000, 10000));
